@@ -13,6 +13,7 @@ class _UsersState extends State<Users> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Users"),
+        backgroundColor: Colors.black12,
       ),
     );
   }

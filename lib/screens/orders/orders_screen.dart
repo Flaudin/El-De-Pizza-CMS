@@ -13,6 +13,7 @@ class _OrdersState extends State<Orders> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Orders"),
+        backgroundColor: Colors.black12,
       ),
     );
   }
