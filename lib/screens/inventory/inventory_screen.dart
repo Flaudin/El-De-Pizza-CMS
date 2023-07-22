@@ -1,3 +1,4 @@
+import 'package:eldepizzacms/screens/inventory/components/body.dart';
 import 'package:flutter/material.dart';
 
 class Inventory extends StatefulWidget {
@@ -15,6 +16,7 @@ class _InventoryState extends State<Inventory> {
         backgroundColor: Colors.black12,
         title: const Text("Inventory"),
       ),
+      body: const Body(),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:eldepizzacms/models/pizza/pizza_models.dart';
+import 'package:eldepizzacms/services/web_services.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -8,6 +10,25 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  List<Pizza> pizzas = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchPizza();
+  }
+
+  Future<void> _fetchPizza() async {
+    try {
+      final pizzaData = await ApiService.fetchPizzas();
+      setState(() {
+        pizzas = pizzaData;
+      });
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,10 +48,10 @@ class _BodyState extends State<Body> {
                 width: 360,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Products",
                       style: TextStyle(
                           fontSize: 20,
@@ -38,8 +59,9 @@ class _BodyState extends State<Body> {
                           color: Colors.black54),
                     ),
                     Text(
-                      "0 items",
-                      style: TextStyle(color: Colors.black45, fontSize: 16),
+                      "${pizzas.length} items",
+                      style:
+                          const TextStyle(color: Colors.black45, fontSize: 16),
                     )
                   ],
                 ),
